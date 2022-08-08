@@ -1,0 +1,94 @@
+{% load staticfiles %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Add Product</title>
+       <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logop.png' %}"/>
+  <style>
+
+.button {
+  background-color: #3388AA; /* Green */
+  border: none;
+  color: orange;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+}
+
+
+.button2 {
+  background-color: ;
+  color: red;
+  border: 2px solid #008CBA;
+}
+
+.button2:hover {
+  background-color: #FF0022;
+  color: white;
+}
+</style>
+</head>
+<body>
+ <div class="main">
+    <nav class="topnav">
+                     <a href={{curl}}>Home</a>
+                  <a id="button-a" onclick="Printbill('0')" href="#">Generate Bill</a>
+            <a id="button-a" onclick="Printbill('1')" href="#">Print Bill</a>
+                  <a href={{curl}}addcustomer/>Add Customer </a>
+                  <a href={{curl}}addproduct/>Add Product</a>
+                 <!-- <a href={{curl}}showcustomer/>View/Edit Customer</a><a href={{curl}}showproduct/>View/Edit Product</a>-->
+        <a href={{curl}}admin/main/customer/>View/Edit Customer</a>
+        <a href={{curl}}admin/main/product/>View/Edit Product</a>
+        <a href={{curl}}viewfile/>Monthly Report</a>
+        </nav>
+        <div class="upper">
+            <div class="head" style="font-family: 'Spicy Rice', cursive;">
+                <a href={{curl}}> <img src="{% static 'images/logo3.png' %}"></a>
+                <h1>Shrinathji Agency Guna</h1>
+        </div>
+            <div id="v"> <marquee  style="color: red; font-family: Book Antiqua" behavior="alternate" >Do not use Special characters in Name</marquee></div>
+<h6>Please Enter all below details to add Product</h6>
+<font color="Red">{{output}}</font>
+<form method="post" action={{curl}}addproduct/>
+{% csrf_token %}
+<table cellspacing="15" align="center">
+<tr>
+<td>Enter HSN Code</td>
+<td><input type="text" name="hsn" /></td>
+</tr>
+<tr>
+<td>Product Name</td>
+<td><input type="text" name="pname" /></td>
+</tr>
+<tr>
+<td>Enter MRP</td>
+<td><input type="text" name="mrp" /></td>
+</tr>
+<tr>
+<td>Enter Rate</td>
+<td><input type="text" name="rate" /></td>
+</tr>
+
+  <tr>
+<td>CGST</td>
+<td><input type="text" name="cgst" /></td>
+</tr>
+
+  <tr>
+<td>SGST</td>
+<td><input type="text" name="sgst" /></td>
+</tr>
+<tr>
+    <td><input type="submit"  class="button button2" value="Please Add" /></td>
+</tr>
+</table>
+</form>
+<!-- End your code here-->
+</body>
+</html>

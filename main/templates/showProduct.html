@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Product View</title>
+    <link rel="shortcut icon" type="image/png" href="{% static 'images/logop.png' %}"/>
+      <link rel="stylesheet" href="{% static 'css/base2.css' %}">
+</head>
+
+<body>
+   <div class="main">
+    <nav class="topnav">
+                            <a href={{curl}}>Home</a>
+                  <a id="button-a" onclick="Printbill('0')" href="#">Generate Bill</a>
+                    <a id="button-a" onclick="Printbill('1')" href="#">Print Bill</a>
+                  <a href={{curl}}addcustomer/>Add Customer </a>
+                  <a href={{curl}}addproduct/>Add Product</a>
+                  <a href={{curl}}showcustomer/>View/Edit Customer</a>
+                  <a href={{curl}}showproduct/>View/Edit Product</a>
+                    <a href={{curl}}viewfile/>Monthly Report</a>
+        </nav>
+        <div class="upper">
+            <div class="head" style="font-family: 'Spicy Rice', cursive;">
+                 <a href={{curl}}> <img src="{% static 'images/logo3.png' %}"></a>
+                <h1>Shrinathji Agency Guna</h1>
+        </div>
+<!-- Start your code here -->
+<div class="head"><h3 ><font color="Red">The Product's info in our database are as follow</font></h3></div>
+
+<table style="width:100%">
+    <tr>
+    <th>S No.</th>
+    <th>HSNCODE</th>
+    <th>Product Name</th>
+    <th>MRP</th>
+    <th>Rate</th>
+    <th>CGST</th>
+    <th>SGST</th>
+        <th>Delete</th>
+</tr>
+{% for user in out%}
+    <td style="text-align:center;">{{user.id}}</td>
+   <td style="text-align:center;">{{user.hsncode}}</td>
+    <td style="text-align:center;">{{user.pname}}</td>
+    <td style="text-align:center;">{{user.MRP}}</td>
+    <td style="text-align:center;">{{user.rate}}</td>
+    <td style="text-align:center;">{{user.cgst}}</td>
+    <td style="text-align:center;">{{user.sgst}}</td>
+      <td align="center"><a href="{{curl}}manageP/?action=delete&rid={{user.pname}}&e={{user.id}}" title="Delete Product" ><img src="{% static "images/del2.jpg" %}" alt="delete" width="30" height="25"></td></a>
+    </tr>
+{% endfor %}
+</table>
+</body>
+</html>
